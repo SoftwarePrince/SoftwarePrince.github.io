@@ -116,9 +116,10 @@
           }
         } else if (document.referrer.includes("amazon")) {
           let newu = changeurl(document.referrer)
-          console.log(newu);
-          //alert(newu);
-          location.href = new
+          location.href = newu;
+        }else if(location.href.includes("ref=")){
+          let newu = changeurl(location.href)
+          location.href = newu
         }
 
         else
