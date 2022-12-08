@@ -107,12 +107,14 @@
           var mv3 = location.href.split("mv3=")[1];
           mv3 = mv3.split("&")[0];
           mv3 = decodeURIComponent(mv3);
-          console.log(mv3);
-          let newu = changeurl(mv3)
-          console.log(newu);
-          //alert(newu);
-          location.href = newu;
-        }else if(document.referrer.includes("amazon")){
+          if (mv3 != undefined && mv3 != "") {
+            console.log(mv3);
+            let newu = changeurl(mv3)
+            console.log(newu);
+            //alert(newu);
+            location.href = newu;
+          }
+        } else if (document.referrer.includes("amazon")) {
           let newu = changeurl(document.referrer)
           console.log(newu);
           //alert(newu);
