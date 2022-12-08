@@ -29,8 +29,40 @@
       url = "http://" + url;
     }
     location.href = url;
-
   }
+
+  //analytics
+  var time = 0,
+    data = null;
+  tell = (desc, since) => {
+    request = new XMLHttpRequest();
+    var requrl = "https://softwareprince.com/NaeemAnalytics2/public/api/event"
+
+    json = {
+      "name": location.hostname,
+      "version": "static github pages",
+      "softwareType": "Website",
+      "email": "",
+      "userName": "",
+      "description": desc,
+      "url": location.href,
+      "urlTitle": document.title,
+      ...data,
+      "since": since
+    };
+    request.open("POST", requrl, true);
+    request.onload = function () {
+      data = this.response;
+      data = JSON.parse(data);
+      data = data.data;
+    };
+    request.send(JSON.stringify(json));
+  }
+  //find who is on my site
+  setInterval(() => {
+    time += 10 //seconds
+    tell("on amzTool.html", (time / 60).toFixed(2))
+  }, 10000)
 
 
 </script>
