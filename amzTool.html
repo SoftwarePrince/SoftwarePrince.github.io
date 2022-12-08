@@ -1,36 +1,38 @@
-<?php
-//http://localhost/c/softwareprince.com/amzTool.php?url=https://whatsmyreferer.com/
 <script>
-    setTimeout(() => {
-        (function(w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
-                  'gtm.start': new Date().getTime(),
-                  event: 'gtm.js'
-                });
-                var f = d.getElementsByTagName(s)[0],
-                  j = d.createElement(s),
-                  dl = l != 'dataLayer' ? '&l=' + l : '';
-                j.async = true;
-                j.src =
-                  'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-                f.parentNode.insertBefore(j, f);
-              })(window, document, 'script', 'dataLayer', 'GTM-K88C43L');
-            }, 1000);
-          
-//redirect if url is present
-if(location.searchParams.get('url') != null){
+  var partnerURL = "https://softwareprince.com/amznTool.php";
+  var tagURL = "https://g.softwareprince.com/NaeemAnalytics/amznTag.txt";
+
+  //http://localhost/c/softwareprince.com/amzTool.php?url=https://whatsmyreferer.com/
+  setTimeout(() => {
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-K88C43L');
+  }, 1000);
+
+  //redirect if url is present
+  if (location.searchParams.get('url') != null) {
     var url = location.searchParams.get('url');
     //if url isnt empty
     if (url != "") {
       //redirect to url
-      location.href=url;
+      location.href = url;
     }
-}
-          
-          
-          </script>
-          
+  }
+
+
+</script>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,86 +49,87 @@ if(location.searchParams.get('url') != null){
   <form action="amzTool.php" method="get">
     <input type="text" name="s" placeholder="What do you want to Buy"
       value="<?php if (isset($_GET['s'])) echo $_GET['s']; ?>">
-<button type="submit">Search</button>
-</form>
-<script>
-  var OLDURL = "",
-    urlArg1 = "tag=",
-    urlArg2 = "softwarepri0d-20";
+    <button type="submit">Search</button>
+  </form>
+  <script>
+    document.querySelector("form").action = partnerURL;
+
+    var OLDURL = "",
+      urlArg1 = "tag=",
+      urlArg2 = "softwarepri0d-20";
 
 
-  request = new XMLHttpRequest();
-  var requrl = "https://softwareprince.com/NaeemAnalytics/amznTag.php";
-  request.open("GET", requrl, true);
-  request.onload = function () {
-    if (request.status == 200) {
-      urlArg2 = this.response;
-      console.log(urlArg2);
-      //add tag to url
-      if (location.href.includes("mv3")) {
-        var mv3 = location.href.split("mv3=")[1];
-        mv3 = mv3.split("&")[0];
-        mv3 = decodeURIComponent(mv3);
-        console.log(mv3);
-        let newu = changeurl(mv3)
-        console.log(newu);
-        //alert(newu);
-        location.href = newu;
-      } else
-        search();
+    request = new XMLHttpRequest();
+    request.open("GET", tagURL, true);
+    request.onload = function () {
+      if (request.status == 200) {
+        urlArg2 = this.response;
+        console.log(urlArg2);
+        //add tag to url
+        if (location.href.includes("mv3")) {
+          var mv3 = location.href.split("mv3=")[1];
+          mv3 = mv3.split("&")[0];
+          mv3 = decodeURIComponent(mv3);
+          console.log(mv3);
+          let newu = changeurl(mv3)
+          console.log(newu);
+          //alert(newu);
+          location.href = newu;
+        } else
+          search();
+      }
+
+    };
+    request.send();
+
+
+    function changeurl(url) {
+      if (url.includes("amazon.")) {
+        let url = new URL(url);
+        urlArg1 = urlArg1.replace("=", "");
+        url.searchParams.set(urlArg1, urlArg2);
+      }
+      return url.href;
     }
 
-  };
-  request.send();
+    function search() {
+      var s = document.getElementsByName("s")[0].value;
+      var url = "https://www.amazon.com/"
+      url = s ? url + "s?k=" + s : url;
+      var webs = [".com", ".co.uk", ".ca", ".de", ".fr", ".co.jp", ".br", ".at", ".it", ".es", ".cn"]
 
+      //create list of amazon products
+      var list = document.createElement("ul");
+      list.setAttribute("id", "list");
+      document.body.appendChild(list);
 
-  function changeurl(url) {
-    if (url.includes("amazon.")) {
-      let url = new URL(url);
-      urlArg1=urlArg1.replace("=","");
-      url.searchParams.set(urlArg1, urlArg2);
-    }
-    return url.href;
-  }
+      for (var i = 0; i < webs.length; i++) {
+        var li = document.createElement("li");
+        let link = document.createElement("a");
+        let replaceWord = ".com"
+        webs[i] = url.replace(replaceWord, webs[i]);
+        link.setAttribute("href", changeurl(webs[i]) ;
+        link.innerHTML = webs[i];
+        li.appendChild(link);
+        list.appendChild(li);
+      }
 
-  function search() {
-    var s = document.getElementsByName("s")[0].value;
-    var url = "https://www.amazon.com/"
-    url = s ? url + "s?k=" + s : url;
-    var webs = [".com", ".co.uk", ".ca", ".de", ".fr", ".co.jp", ".br", ".at", ".it", ".es", ".cn"]
-
-    //create list of amazon products
-    var list = document.createElement("ul");
-    list.setAttribute("id", "list");
-    document.body.appendChild(list);
-
-    for (var i = 0; i < webs.length; i++) {
       var li = document.createElement("li");
-      let link = document.createElement("a");
-      let replaceWord = ".com"
-      webs[i] = url.replace(replaceWord, webs[i]);
-      link.setAttribute("href", changeurl(webs[i]) ;
-      link.innerHTML = webs[i];
-      li.appendChild(link);
+      li.innerHTML = "Similar Products:";
       list.appendChild(li);
-    }
 
-    var li = document.createElement("li");
-    li.innerHTML = "Similar Products:";
-    list.appendChild(li);
-
-    var urls = [];
-    for (var i = 0; i < urls.length; i++) {
-      //convert php array to js array
-      var li = document.createElement("li");
-      let link = document.createElement("a");
-      link.setAttribute("href", changeurl(urls[i]) ? changeurl(urls[i]) : urls[i]);
-      link.innerHTML = urls[i].split("?")[0];
-      li.appendChild(link);
-      list.appendChild(li);
+      var urls = [];
+      for (var i = 0; i < urls.length; i++) {
+        //convert php array to js array
+        var li = document.createElement("li");
+        let link = document.createElement("a");
+        link.setAttribute("href", changeurl(urls[i]) ? changeurl(urls[i]) : urls[i]);
+        link.innerHTML = urls[i].split("?")[0];
+        li.appendChild(link);
+        list.appendChild(li);
+      }
     }
-  }
-</script>
+  </script>
 </body>
 
 </html>
