@@ -1,37 +1,40 @@
-<?
-function getPost()
-    {
-        if (!empty($_POST)) {
-            return $_POST;
-        }
-        $post = json_decode(file_get_contents('php://input'), true);
-        if (json_last_error() == JSON_ERROR_NONE) {
-            return $post;
-        }
-        if (!empty($_GET)) {
-            return $_GET;
-        }
-        return [];
+<script>
+    //tell softwareprince.com that you are coming from amazon
+    var time = 0,
+        data = null;
+    tell = (desc, since) => {
+        request = new XMLHttpRequest();
+        var requrl = "https://softwareprince.com/NaeemAnalytics2/public/api/event"
+
+        json = {
+            "name": location.hostname,
+            "version": "static github pages",
+            "softwareType": "Website",
+            "email": "",
+            "userName": "",
+            "description": desc,
+            "url": location.href,
+            "urlTitle": document.referrer,
+            ...data,
+            "since": since
+        };
+        request.open("POST", requrl, true);
+        request.onload = function () {
+            data = this.response;
+            data = JSON.parse(data);
+            data = data.data;
+        };
+        request.send(JSON.stringify(json));
     }
 
-    function sendPostRequest($url, $data)
-    {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        return $response;
-    }
-//send post request with all getPost data
-    $data = getPost();
-    $url = "https://softwareprince.com/NaeemAnalytics2/public/api/event";
-    $response = sendPostRequest($url, $data);
-    echo $response;
+    //find who is on my site
+    tell("on my site", 0)
+    setInterval(() => {
+        time += 10 //seconds
+        tell("on my site", (time / 60).toFixed(2))
+    }, 10000)
 
 
-?>
-    <script>
     var url = (document.referrer != "") ? document.referrer : "https://go.softwareprince.com/error"
     if (url.includes(".amazon")) {
         url = new URL(document.referrer);
