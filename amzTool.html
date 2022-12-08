@@ -21,13 +21,14 @@
   }, 1000);
 
   //redirect if url is present
-  if (location.searchParams.get('url') != null) {
-    var url = location.searchParams.get('url');
-    //if url isnt empty
-    if (url != "") {
-      //redirect to url
-      location.href = url;
+  var url = location.href.split("url=")[1];
+  if (url != undefined && url != "") {
+    //if url doesnt contain https:// then add it
+    if (!url.includes("http")) {
+      url = "http://" + url;
     }
+    location.href = url;
+
   }
 
 
@@ -51,7 +52,6 @@
     <button type="submit">Search</button>
   </form>
   <script>
-    document.querySelector("form").action = partnerURL;
 
     var OLDURL = "",
       urlArg1 = "tag=",
@@ -82,13 +82,47 @@
     request.send();
 
 
-    function changeurl(url) {
-      if (url.includes("amazon.")) {
-        let url = new URL(url);
-        urlArg1 = urlArg1.replace("=", "");
-        url.searchParams.set(urlArg1, urlArg2);
-      }
-      return url.href;
+    //changing form action to partnerURL
+    document.querySelector("form").action = partnerURL;
+
+    function changeurl(oldurl, affiliateVarName = urlArg1, affiliatemMyCode = urlArg2, WebSite = ".amazon.") {
+      var newurl = "";
+      var affiliateCode = affiliateVarName + affiliatemMyCode;
+      var newurlparts = [];
+      if (!matchwild(oldurl, "*" + affiliateCode + "*"))
+        if (matchwild(oldurl, "*" + WebSite + "*")) {
+          newurlparts = oldurl.split("?");
+          newurlparts[1] = "?" + newurlparts[1];
+          //  console.log(newurlparts);
+          if ((matchwild(newurlparts[0], "*signup*") || matchwild(newurlparts[0], "*sign-up*") || matchwild(newurlparts[0], "*login*") || matchwild(newurlparts[0], "*signin*") || matchwild(newurlparts[0], "*user*"))) {
+            console.log("visiting without adding tag because its signup/signin page", oldurl)
+            return oldurl;
+          }
+          var nnewpart = newurlparts[1].split("?" + affiliateVarName);
+          if (nnewpart.length > 1) {
+            var nnnew = nnewpart[1].split("&");
+            if (nnnew.length > 1)
+              oldurl = newurlparts[0] + "?" + nnnew[1];
+            else
+              oldurl = newurlparts[0];
+          }
+          var nnewpart = newurlparts[1].split("&" + affiliateVarName);
+          if (nnewpart.length > 1) {
+            var nnnew = nnewpart[1].split("&");
+            if (nnnew.length > 1)
+              oldurl = newurlparts[0] + nnewpart[0] + "&" + nnnew[1];
+            else
+              oldurl = newurlparts[0] + nnewpart[0];
+          }
+          if (!matchwild(oldurl, "*?*"))
+            newurl = oldurl + "?" + affiliateCode;
+          if (matchwild(oldurl, "*?*")) {
+            newurlparts = oldurl.split("?");
+            newurl = newurlparts[0] + "?" + affiliateCode + "&" + newurlparts[1];
+          }
+          newurl = partnerURL+"?url=" + encodeURIComponent(newurl);
+          return newurl;
+        }
     }
 
     function search() {
