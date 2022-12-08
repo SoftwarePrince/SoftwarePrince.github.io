@@ -1,5 +1,6 @@
 <script>
   var partnerURL = "https://softwareprince.com/amznTool.php";
+    var selfURL = "https://g.softwareprince.com/amznTool.html";
   var tagURL = "https://g.softwareprince.com/NaeemAnalytics/amznTag.txt";
 
   //http://localhost/c/softwareprince.com/amzTool.php?url=https://whatsmyreferer.com/
@@ -83,7 +84,7 @@
 
 
     //changing form action to partnerURL
-    document.querySelector("form").action = partnerURL;
+    document.querySelector("form").action = selfURL;
 
     function changeurl(oldurl, affiliateVarName = urlArg1, affiliatemMyCode = urlArg2, WebSite = ".amazon.") {
       var newurl = "";
