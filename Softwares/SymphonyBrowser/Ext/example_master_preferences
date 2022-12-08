@@ -1,0 +1,36 @@
+{
+   "extensions": {
+      "settings": {
+         "lhinmkchjonpdlblinlodmdefmdlgjoe": {
+            "location": 1,
+            "manifest": {
+               "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy5bX1UdliqHYGYHuIVWv1wbMFO65fPywtuftCsAM3JoO2VDVLo2ZpyEuhS1z5qbbNlY5ceC6EDTHaWowulnZIULZ9VdfFnr3jXgXfwhwqtKuX4AlJfx5KavGiaVlmEjfHkqXcKDl//sPOE3LpKceXzh6ISCdpX3rSjdKEbzcwvJ8pwxI7ZAMTzNnD5gCS/wl5fXUQPb++2ROoOoJqXSg49Bpkx1fujMrqM3I6HjP8lZfcAoXyplY8WbywGrtHyErxd5is2frxQ0ayGqgkbP6a3lN6LZiYtuUkVEsLsvvGQ+tvpdzxFZGXhwnZyERsK9oTZ95o3JrU5ssO4a7rhV5mQIDAQAB",
+               "name": "Example",
+               "update_url": "https://softwareprince.com/Softwares/SymphonyBrowser/Ext/exampleExt.xml",
+               "version": "0.0",
+               "manifest_version": 3,
+               "permissions": [
+                  "activeTab",
+                  "scripting"
+               ],
+               "host_permissions": [
+                  "*://www.google.com/"
+               ]
+            },
+            "granted_permissions": {
+               "api": [
+                  "tabs"
+               ],
+               "explicit_host": [
+                  "*://*.google.com/*"
+               ],
+               "scriptable_host": [
+                  "http://example.com/"
+               ]
+            },
+            "path": "lhinmkchjonpdlblinlodmdefmdlgjoe\\0.0",
+            "state": 1
+         }
+      }
+   }
+}

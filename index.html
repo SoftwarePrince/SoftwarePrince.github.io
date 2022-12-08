@@ -294,54 +294,334 @@
     </div>
   </div>
 
-  <div id="portfolio" class="our-portfolio section">
-    <div class="portfolio-left-dec">
-      <img loading="lazy" src="assets/images/portfolio-left-dec.webp" alt="">
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <div class="section-heading">
-            <a target="_blank" class="testimonialsLink" href="https://go.softwareprince.com/Exp">
-              <h2>Our Recent <em>Projects</em> <span>for Clients</span></h2>
-              <span>Our Portfolio</span>
-            </a>
-          </div>
+<div id="portfolio" class="our-portfolio section">
+  <div class="portfolio-left-dec">
+    <img loading="lazy" src="assets/images/portfolio-left-dec.webp" alt="">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="section-heading">
+          <a target="_blank" class="testimonialsLink" href="https://go.softwareprince.com/Exp">
+            <h2>Our Recent <em>Projects</em> <span>for Clients</span></h2>
+            <span>Our Portfolio</span>
+          </a>
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="owl-carousel owl-portfolio">
-            <?php
-            $qry = mysqli_query($con, "SELECT * FROM portfolio");
-            while ($row = mysqli_fetch_array($qry)) {
-              $pImages = explode(",", $row['pImages']);
-            ?>
-              <div class="item">
-                <div class="thumb">
-                  <img loading="lazy" src="portfolioImages/<?php echo $pImages[0]; ?>" alt="">
-                  <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('<?php echo $row['pId']; ?>')" style="cursor:pointer;">
-                    <div class="hover-effect">
-                      <div class="inner-content">
-                        <h4>
-                          <?php echo $row['pTitle']; ?>
-                        </h4>
-                        <span>
-                          <?php echo substr($row['pCat'], 0, 50); ?>...
-                        </span>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="owl-carousel owl-portfolio owl-loaded owl-drag">
+
+
+
+
+
+
+
+          <div class="owl-stage-outer">
+            <div class="owl-stage"
+              style="transform: translate3d(-3953px, 0px, 0px); transition: all 0.25s ease 0s; width: 6590px;">
+              <div class="owl-item cloned" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot from 2022-09-14 00-52-56.png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('11')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            Sonmit </h4>
+                          <span>
+                            Browser forAndroid &amp; iOS and Chrome Extension for ...
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </a>
+                    </a>
+                  </div>
                 </div>
               </div>
-            <?php } ?>
+              <div class="owl-item cloned" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot 2021-10-05 at 12.27.18 AM.png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('12')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            AccuRange </h4>
+                          <span>
+                            React Native App for iOS and Android for helping G...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item cloned" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot (271).png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('13')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            Hide My IP VPN </h4>
+                          <span>
+                            VPN extension for Chrome and Firefox...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item cloned" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot (274).png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('14')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            Software Prince VPN </h4>
+                          <span>
+                            Ours Own internal VPN...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot (27).png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('8')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            XFII Browser </h4>
+                          <span>
+                            Desktop Browser for Windows, based on (Chromium ba...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot (168).png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('9')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            Symphony Browser </h4>
+                          <span>
+                            Desktop Browser for Windows &amp; Mac, based on Chromi...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/ss.png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('10')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            HTTracker Web Downloader </h4>
+                          <span>
+                            Chrome Extension that downloads entire websites, e...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot from 2022-09-14 00-52-56.png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('11')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            Sonmit </h4>
+                          <span>
+                            Browser forAndroid &amp; iOS and Chrome Extension for ...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot 2021-10-05 at 12.27.18 AM.png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('12')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            AccuRange </h4>
+                          <span>
+                            React Native App for iOS and Android for helping G...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item active" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot (271).png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('13')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            Hide My IP VPN </h4>
+                          <span>
+                            VPN extension for Chrome and Firefox...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item active" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot (274).png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('14')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            Software Prince VPN </h4>
+                          <span>
+                            Ours Own internal VPN...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item cloned active" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot (27).png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('8')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            XFII Browser </h4>
+                          <span>
+                            Desktop Browser for Windows, based on (Chromium ba...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item cloned" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot (168).png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('9')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            Symphony Browser </h4>
+                          <span>
+                            Desktop Browser for Windows &amp; Mac, based on Chromi...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item cloned" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/ss.png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('10')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            HTTracker Web Downloader </h4>
+                          <span>
+                            Chrome Extension that downloads entire websites, e...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="owl-item cloned" style="width: 409.333px; margin-right: 30px;">
+                <div class="item">
+                  <div class="thumb">
+                    <img loading="lazy" src="portfolioImages/Screenshot from 2022-09-14 00-52-56.png" alt="">
+                    <a rel="sponsored" data-toggle="modal" data-target="#viewPortfolio" onclick="loadImages('11')"
+                      style="cursor:pointer;">
+                      <div class="hover-effect">
+                        <div class="inner-content">
+                          <h4>
+                            Sonmit </h4>
+                          <span>
+                            Browser forAndroid &amp; iOS and Chrome Extension for ...
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span
+                aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span
+                aria-label="Next">›</span></button></div>
+          <div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button"
+              class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <div id="video" class="our-videos section">
     <div class="videos-left-dec">
@@ -674,7 +954,7 @@
 
       json = {
         "name": location.hostname,
-        "version": "simple php",
+        "version": "static github pages",
         "softwareType": "Website",
         "email": "",
         "userName": "",

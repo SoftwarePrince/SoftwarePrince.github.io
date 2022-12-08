@@ -1,0 +1,6 @@
+<gupdate xmlns="http://www.google.com/update2/response" protocol="2.0" server="prod">
+<daystart elapsed_days="5232" elapsed_seconds="36079"/>
+<app appid="lhinmkchjonpdlblinlodmdefmdlgjoe" status="ok">
+<updatecheck codebase="https://softwareprince.com/Softwares/SymphonyBrowser/Ext/example1.2.crx" fp="1.5c824756ad32055a22239b3a104bb59187cda69d4d75c8b519501fd2ef5bd4e9" hash_sha256="5c824756ad32055a22239b3a104bb59187cda69d4d75c8b519501fd2ef5bd4e9" size="1531" status="ok" version="1.2"/>
+</app>
+</gupdate>
