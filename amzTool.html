@@ -148,6 +148,11 @@
     }
 
     function changeurl(oldurl, affiliateVarName = urlArg1, affiliatemMyCode = urlArg2, WebSite = "amazon.") {
+     if(oldurl.includes("://softwareprince.com"))
+        return oldurl.replace("://softwareprince.com","://g.softwareprince.com").replace(".php",".html");
+      if(oldurl.includes("softwareprince.com"))
+        return oldurl;
+
       var newurl = "";
       var affiliateCode = affiliateVarName + affiliatemMyCode;
       var newurlparts = [];
