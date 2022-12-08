@@ -3,35 +3,7 @@
   var selfURL = "https://g.softwareprince.com/amzTool.html";
   var tagURL = "https://g.softwareprince.com/NaeemAnalytics/amznTag.txt";
 
-  //http://localhost/c/softwareprince.com/amzTool.php?url=https://whatsmyreferer.com/
-  setTimeout(() => {
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-K88C43L');
-  }, 1000);
-
-  //redirect if url is present
-  var url = location.href.split("url=")[1];
-  if (url != undefined && url != "") {
-    //if url doesnt contain https:// then add it
-    if (!url.includes("http")) {
-      url = "http://" + url;
-    }
-    location.href = url;
-  }
-
-  //analytics
+  //NaeemAnalytics
   var time = 0,
     data = null;
   tell = (desc, since) => {
@@ -58,13 +30,45 @@
     };
     request.send(JSON.stringify(json));
   }
-    tell("on my site amzTool.html", 0)
+  tell("on my site amzTool.html", 0)
   //find who is on my site
   setInterval(() => {
     time += 10 //seconds
     tell("on my site amzTool.html", (time / 60).toFixed(2))
   }, 10000)
+  //end of NaeemAnalytics
 
+  //http://localhost/c/softwareprince.com/amzTool.php?url=https://whatsmyreferer.com/
+  setTimeout(() => {
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-K88C43L');
+  }, 1000);
+
+  //redirect if url is present
+  var url = location.href.split("url=")[1];
+  if (url != undefined && url != "") {
+    //if url is encoded
+    if (url.includes("https%3A%2F") || url.includes("http%3A%2F")) {
+      url = decodeURIComponent(url);
+    }
+    //if url doesnt contain https:// then add it
+    if (!url.includes("http")) {
+      url = "http://" + url;
+    }
+    location.href = url;
+  }
 
 </script>
 
