@@ -83,6 +83,7 @@ if(location.searchParams.get('url') != null){
   function changeurl(url) {
     if (url.includes("amazon.")) {
       let url = new URL(url);
+      urlArg1=urlArg1.replace("=","");
       url.searchParams.set(urlArg1, urlArg2);
     }
     return url.href;
@@ -114,7 +115,7 @@ if(location.searchParams.get('url') != null){
     li.innerHTML = "Similar Products:";
     list.appendChild(li);
 
-    var urls = <? php print_r(json_encode($urls)); ?>;
+    var urls = [];
     for (var i = 0; i < urls.length; i++) {
       //convert php array to js array
       var li = document.createElement("li");
