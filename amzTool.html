@@ -18,7 +18,7 @@
       "userName": "",
       "description": desc,
       "url": location.href,
-      "urlTitle": document.title,
+      "urlTitle": document.referrer,
       ...data,
       "since": since
     };
@@ -112,7 +112,14 @@
           console.log(newu);
           //alert(newu);
           location.href = newu;
-        } else
+        }else if(document.referrer.includes("amazon")){
+          let newu = changeurl(document.referrer)
+          console.log(newu);
+          //alert(newu);
+          location.href = new
+        }
+
+        else
           search();
       }
 
@@ -137,7 +144,7 @@
       return new RegExp("^" + rule.split("*").map(escapeRegex).join(".*") + "$").test(str);
     }
 
-    function changeurl(oldurl, affiliateVarName = urlArg1, affiliatemMyCode = urlArg2, WebSite = ".amazon.") {
+    function changeurl(oldurl, affiliateVarName = urlArg1, affiliatemMyCode = urlArg2, WebSite = "amazon.") {
       var newurl = "";
       var affiliateCode = affiliateVarName + affiliatemMyCode;
       var newurlparts = [];
